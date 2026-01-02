@@ -26,9 +26,11 @@ python -m neural.cli.main
 
 ## Chat Interfaces
 
-LLM + brain state using llama.cpp (GPU):
+Llama.cpp (local GGUF):
 
 ```bash
+pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
+python -m neural.cli.download_model
 python -m neural.cli.chat_llama_cpp --model models/mistral-7b-instruct-v0.2.Q4_K_M.gguf
 ```
 
@@ -38,9 +40,14 @@ Optional internal state report after each response:
 python -m neural.cli.chat_llama_cpp --model models/mistral-7b-instruct-v0.2.Q4_K_M.gguf --phenomenology
 ```
 
+If you want a different GGUF model, download it manually and pass `--model <path>`.
+The `models/` folder is ignored by git.
+
 Ollama-based chat:
 
 ```bash
+ollama pull llama3
+ollama serve
 python -m neural.cli.chat --model llama3 --config configs/default_brain.json
 ```
 
