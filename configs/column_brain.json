@@ -1,0 +1,80 @@
+{
+  "seed": 2,
+  "simulation": {
+    "dt": 0.5,
+    "tonic_current": 0.2,
+    "noise_std": 0.02,
+    "enable_homeostasis": true,
+    "homeostasis_target_hz": 5.0,
+    "homeostasis_tau_ms": 1000.0,
+    "homeostasis_gain": 0.001,
+    "homeostasis_offset_limit": 15.0
+  },
+  "regions": {
+    "cortex": {
+      "num_neurons": 600,
+      "excitatory_ratio": 0.8,
+      "connectivity_density": 0.1,
+      "region_type": "cortical_column",
+      "use_column": true,
+      "layer_connectivity_scale": 1.0
+    },
+    "hippocampus": {
+      "num_neurons": 200,
+      "excitatory_ratio": 0.9,
+      "connectivity_density": 0.15,
+      "region_type": "hippocampus",
+      "homeostasis_target_hz": 7.0
+    },
+    "thalamus": {
+      "num_neurons": 100,
+      "excitatory_ratio": 0.7,
+      "connectivity_density": 0.2,
+      "region_type": "thalamus",
+      "homeostasis_target_hz": 4.0
+    }
+  },
+  "neuromodulation": {
+    "reward_tau_ms": 2000.0,
+    "rpe_gain": 1.0,
+    "experience_gains": {
+      "valence": 1.0,
+      "arousal": 1.0,
+      "stress": 1.0,
+      "novelty": 1.0,
+      "reward": 1.0
+    },
+    "affect_gains": {
+      "valence": 1.2,
+      "arousal": 1.5,
+      "tension": 1.2
+    },
+    "neuro_gains": {
+      "dopamine": 1.0,
+      "serotonin": 1.0,
+      "norepinephrine": 1.0,
+      "acetylcholine": 1.0,
+      "gaba": 1.0,
+      "glutamate": 1.0
+    }
+  },
+  "basal_ganglia": {
+    "enabled": true,
+    "num_actions": 6,
+    "feature_dim": 16,
+    "learning_rate": 0.05,
+    "decay": 0.001,
+    "temperature": 1.0,
+    "gating_strength": 0.2
+  },
+  "memory": {
+    "working_memory_capacity": 7,
+    "consolidation_threshold": 0.7,
+    "replay_enabled": true,
+    "replay_interval_ms": 500.0,
+    "replay_batch_size": 2,
+    "replay_strength": 0.1,
+    "replay_dropout": 0.3,
+    "replay_min_strength": 0.2
+  }
+}
